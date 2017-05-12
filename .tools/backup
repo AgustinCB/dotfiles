@@ -1,0 +1,3 @@
+#!/bin/bash
+
+tar -cjf /mnt/data/backups/home.tar.bz2 /home/agustin/{Downloads,projects,study,tmux,work,.b2_account_info,.babel.json,.bash_history,.bash_profile,.bashrc,.cabal,.config,.ghc,.gitconfig,.gnupg,.heroku,.java,.local,.mkshrc,.mongorc.js,.netrc,.node-gyp,.npm,.npmrc,.pki,.profile,.rvm,.s3cfg,.sbm,.sbt,.selected_editor,.snapsort-config.d,.sortable,.ssh,.stack,.tmux,.tmux.conf,.tools,.vim,.viminfo,.zoom,.zshrc}; b2 upload_file myhome /mnt/data/backups/home.tar.bz2 home.tar.bz2
