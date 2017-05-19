@@ -9,7 +9,6 @@ PROJECTS="$PROJECTS_FOLDER/*"
 
 for D in $PROJECTS; do
   if [ -d "$D" ] && [ -f "$D/commit" ]; then
-    echo "IN $D"
     cd "$D"
     MESSAGE=$(cat "$D/commit")
     rm "$D/commit"
