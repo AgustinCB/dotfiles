@@ -13,6 +13,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
 " Scala plugin
 Plugin 'derekwyatt/vim-scala'
+" Git plugin
+Plugin 'tpope/vim-fugitive'
 
 " Ack configuration to use ag instead
 if executable('ag')
