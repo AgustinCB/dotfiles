@@ -15,6 +15,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'derekwyatt/vim-scala'
 " Git plugin
 Plugin 'tpope/vim-fugitive'
+" Multicursor plugin
+Plugin 'terryma/vim-multiple-cursors'
+" Airline status bar plugin
+Plugin 'vim-airline/vim-airline'
+" Plugin to run commands in a window
+Plugin 'wkentaro/conque.vim'
 
 " Ack configuration to use ag instead
 if executable('ag')
@@ -27,6 +33,8 @@ if executable('rg')
 endif
 
 autocmd vimenter * NERDTree
+
+let g:airline#extensions#tabline#enabled = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
