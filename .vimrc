@@ -21,6 +21,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-airline/vim-airline'
 " Plugin to run commands in a window
 Plugin 'wkentaro/conque.vim'
+" Plugin to close buffers 
+Plugin 'moll/vim-bbye'
 
 " Ack configuration to use ag instead
 if executable('ag')
@@ -33,6 +35,9 @@ if executable('rg')
 endif
 
 autocmd vimenter * NERDTree
+
+:command Bclose Bdelete
+:command Bc Bdelete
 
 let g:airline#extensions#tabline#enabled = 1
 
