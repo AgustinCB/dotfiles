@@ -24,6 +24,11 @@ Plugin 'wkentaro/conque.vim'
 " Plugin to close buffers 
 Plugin 'moll/vim-bbye'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+
 " Ack configuration to use ag instead
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -34,13 +39,17 @@ if executable('rg')
   let g:ackprg = 'rg --vimgrep'
 endif
 
-autocmd vimenter * NERDTree
-
 :command Bclose Bdelete
 :command Bc Bdelete
+:command Bo Bopen
+
+" Shortcuts
+:nnoremap <Leader>q :Bdelete<CR>
+:nnoremap <Leader>n :bnext<CR>
+:nnoremap <Leader>p :bprev<CR>
+:nnoremap <Leader>t :NERDTree<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+autocmd vimenter * NERDTree
+autocmd vimenter * wincmd l
