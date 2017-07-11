@@ -41,7 +41,6 @@ endif
 
 :command Bclose Bdelete
 :command Bc Bdelete
-:command Bo Bopen
 
 " Shortcuts
 :nnoremap <Leader>q :Bdelete<CR>
@@ -49,7 +48,24 @@ endif
 :nnoremap <Leader>p :bprev<CR>
 :nnoremap <Leader>t :NERDTree<CR>
 
+" Remap arrows to switch between windows
+
+map <Up>   <C-W>k
+map <Down> <C-W>j
+map <Left> <C-W>h
+map <Right> <C-W>l
+
+" Remap tab to switch between tabs
+
+nmap <tab> gt
+nmap <s-tab> gT
+
 let g:airline#extensions#tabline#enabled = 1
+
+" Start with NERDTree, but in the other window, PLEASE
 
 autocmd vimenter * NERDTree
 autocmd vimenter * wincmd l
+
+" set paste by default
+:set paste

@@ -5,4 +5,5 @@ function! s:Bopen(buffer)
 endfunction
 
 command! -complete=file -nargs=1 Bopen call s:Bopen('<args>')
+command! -complete=file -nargs=1 Bo call s:Bopen('<args>')
 " nnoremap <silent> <Leader>bo :Bopen<CR>
