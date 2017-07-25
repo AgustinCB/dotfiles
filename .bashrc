@@ -114,4 +114,7 @@ export LFS=/mnt/lfs
 export PATH="$PATH:$HOME/.rvm/bin:/opt/blender:/opt/Unity/Editor:/opt/Unity/MonoDevelop:/opt/Unity/MonoDevelop/bin:/home/agustin/.local/bin:/opt/spark/bin:/home/agustin/.tools:/home/agustin/.cargo/bin"
 
 # added by Anaconda3 4.3.1 installer
-export PATH="/home/agustin/anaconda3/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
+
+# add i3 scripts
+export PATH="$HOME/.i3/scripts:$PATH"
