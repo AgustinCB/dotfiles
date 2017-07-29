@@ -23,11 +23,19 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'wkentaro/conque.vim'
 " Plugin to close buffers 
 Plugin 'moll/vim-bbye'
+" Plugin for typescript highlight
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 filetype plugin indent on    " required
+
+filetype plugin on
+syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Ack configuration to use ag instead
 if executable('ag')
