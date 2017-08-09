@@ -21,6 +21,10 @@ new_brightness_p=$(($old_brightness_p $1))
 # calculate new brightness value
 new_brightness=$(( $max_brightness * $new_brightness_p / 100 ))
 
+notification="Brightness: $new_brightness ($1 %)"
+
+twmnc $notification
+
 # set the new brightness value
 #sudo chmod 666 $handler"brightness"
 echo $new_brightness > $handler"brightness"
