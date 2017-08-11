@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pactl set-sink-mute 0 toggle
+
+notification=$(pactl list sinks | grep Mute | sed -e 's/^[[:space:]]*//')
+
+twmnc $notification

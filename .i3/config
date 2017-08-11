@@ -115,8 +115,13 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym --release $mod+Control+l exec "$HOME/.i3/scripts/lock"
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec "$HOME/.tools/brightness +5"
-bindsym XF86MonBrightnessDown exec "$HOME/.tools/brightness -5"
+bindsym XF86MonBrightnessUp exec --no-startup-id "$HOME/.tools/brightness +5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "$HOME/.tools/brightness -5"
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id "$HOME/.tools/volume +5"
+bindsym XF86AudioLowerVolume exec --no-startup-id "$HOME/.tools/volume -5"
+bindsym XF86AudioMute exec --no-startup-id "$HOME/.tools/mute"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
