@@ -175,7 +175,7 @@ exec "setxkbmap -layout us,es"
 exec "setxkbmap -option 'grp:alt_space_toggle'"
 
 # Autolock
-exec --no-startup-id xautolock -time 10 -locker "$HOME"/.i3/scripts/lock
+exec --no-startup-id xautolock -time 10 -locker "$HOME/.i3/scripts/lock -c"
 
 # Background
 exec --no-startup-id feh --bg-scale "$HOME"/.i3/background.jpg
