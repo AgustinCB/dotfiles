@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(setxkbmap -query | grep -q "layout:\s\+$1") && setxkbmap "$2" || setxkbmap "$1"

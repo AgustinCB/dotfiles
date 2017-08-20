@@ -73,7 +73,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -171,8 +171,7 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # Keyboard and touchpad configuration
 exec "synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1"
-exec "setxkbmap -layout us,es"
-exec "setxkbmap -option 'grp:alt_space_toggle'"
+bindsym $mod+space exec --no-startup-id "$HOME/.tools/togglekb us es"
 
 # Autolock
 exec --no-startup-id xautolock -time 10 -locker "$HOME/.i3/scripts/lock -c"
