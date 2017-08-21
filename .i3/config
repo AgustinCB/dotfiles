@@ -170,7 +170,7 @@ client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # Keyboard and touchpad configuration
-exec "synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1"
+exec --no-startup-id "synclient VertEdgeScroll=1 TapButton1=1 TapButton2=1 TapButton3=1"
 bindsym $mod+space exec --no-startup-id "$HOME/.tools/togglekb us es"
 
 # Autolock
@@ -178,6 +178,9 @@ exec --no-startup-id xautolock -time 10 -locker "$HOME/.i3/scripts/lock -c"
 
 # Background
 exec --no-startup-id feh --bg-scale "$HOME"/.i3/background.jpg
+
+# Start default network
+exec --no-startup-id "sudo netctl start 'wlp4s0-R&A'"
 
 # default work spaces
 exec --no-startup-id i3-msg 'workspace 2; exec steam; workspace 1'
