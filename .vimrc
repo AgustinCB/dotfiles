@@ -19,6 +19,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'terryma/vim-multiple-cursors'
 " Airline status bar plugin
 Plugin 'vim-airline/vim-airline'
+" Airline themes
+Plugin 'vim-airline/vim-airline-themes'
 " Plugin to run commands in a window
 Plugin 'wkentaro/conque.vim'
 " Plugin to close buffers 
@@ -69,11 +71,20 @@ nmap <tab> gt
 nmap <s-tab> gT
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg='dark'
 
 " Start with NERDTree, but in the other window, PLEASE
 
 autocmd vimenter * NERDTree
 autocmd vimenter * wincmd l
 
-" set paste by default
-:set paste
+" Autocomplete
+
+ino " ""<left>
+ino ' ''<left>
+ino ( ()<left>
+ino [ []<left>
+ino { {}<left>
+ino {<CR> {<CR>}<ESC>O
+ino {;<CR> {<CR>};<ESC>O
