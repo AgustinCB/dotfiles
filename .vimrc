@@ -27,6 +27,8 @@ Plugin 'wkentaro/conque.vim'
 Plugin 'moll/vim-bbye'
 " Plugin for typescript highlight
 Plugin 'leafgarland/typescript-vim'
+" Plugin for autoclose things
+Plugin 'Townk/vim-autoclose'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
