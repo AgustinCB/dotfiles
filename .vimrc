@@ -78,13 +78,3 @@ let g:airline_solarized_bg='dark'
 
 autocmd vimenter * NERDTree
 autocmd vimenter * wincmd l
-
-" Autocomplete
-
-ino " ""<left>
-ino ' ''<left>
-ino ( ()<left>
-ino [ []<left>
-ino { {}<left>
-ino {<CR> {<CR>}<ESC>O
-ino {;<CR> {<CR>};<ESC>O
