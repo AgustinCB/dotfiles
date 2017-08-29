@@ -29,6 +29,8 @@ Plugin 'moll/vim-bbye'
 Plugin 'leafgarland/typescript-vim'
 " Plugin for autoclose things
 Plugin 'Townk/vim-autoclose'
+" Julia plugin
+Plugin 'JuliaEditorSupport/julia-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
