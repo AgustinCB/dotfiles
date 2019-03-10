@@ -1,5 +1,23 @@
 #!/bin/bash
 
-tar cf /mnt/data/backups/home.tar /home/agustin/{Downloads,projects,study,tmux,work,.b2_account_info,.babel.json,.bash_history,.bash_profile,.bashrc,.cabal,.config,.ghc,.gitconfig,.gnupg,.heroku,.i3,.java,.local,.mkshrc,.netrc,.node-gyp,.npm,.npmrc,.pki,.profile,.s3cfg,.sbm,.sbt,.selected_editor,.snapsort-config.d,.sortable,.ssh,.stack,.tmux,.tmux.conf,.tools,.vim,.viminfo,.vimrc,.X*,.zoom,.zshrc}
-xz -9e -T 6 /mnt/data/backups/home.tar
-backblaze-b2 upload_file myhome /mnt/data/backups/home.tar.xz home.tar.xz
+set -xeuo pipefail
+
+USAGE="Usage: backup [btrfs root path]"
+btrfs_location=${1:?$USAGE}
+
+send_subvolume () {
+  subvolume=${1:?First parameter is subvolume}
+  path="$btrfs_location/__current/$subvolume"
+  backup="$btrfs_location/__snapshot/$subvolume"
+  btrfs subvolume snapshot -r "$path" "$backup"_ro
+  btrfs subvolume snapshot "$backup"_ro "$backup"
+  btrfs filesystem defragment -r -clzo "$backup"
+  btrfs subvolume delete "$backup"_ro
+  btrfs send "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots/$subvolume"
+  btrfs subvolume delete "$backup"_ro
+}
+
+subvolumes="ROOT opt home"
+for subvolume in $subvolumes; do
+  send_subvolume $subvolume
+done
