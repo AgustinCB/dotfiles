@@ -11,13 +11,15 @@ send_subvolume () {
   backup="$btrfs_location/__snapshot/$subvolume"
   btrfs subvolume snapshot -r "$path" "$backup"_ro
   btrfs subvolume snapshot "$backup"_ro "$backup"
+  btrfs subvolume delete "$backup"_ro
   btrfs filesystem defragment -r -clzo "$backup"
+  btrfs subvolume snapshot -r "$backup" "$backup"_ro
+  btrfs send "$backup"_ro | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
   btrfs subvolume delete "$backup"_ro
-  btrfs send "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots/$subvolume"
-  btrfs subvolume delete "$backup"_ro
+  btrfs subvolume delete "$backup"
 }
 
-subvolumes="ROOT opt home"
+subvolumes="ROOT opt home var"
 for subvolume in $subvolumes; do
   send_subvolume $subvolume
 done
