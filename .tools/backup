@@ -2,10 +2,11 @@
 
 set -xeuo pipefail
 
-USAGE="Usage: backup [btrfs root path]"
-btrfs_location=${1:?$USAGE}
+USAGE="Usage: backup [base|incremental] [btrfs root path]"
+cmd=${1:?$USAGE}
+btrfs_location=${2:?$USAGE}
 
-send_subvolume () {
+send_base_subvolume () {
   subvolume=${1:?First parameter is subvolume}
   path="$btrfs_location/__current/$subvolume"
   backup="$btrfs_location/__snapshot/$subvolume"
@@ -14,12 +15,28 @@ send_subvolume () {
   btrfs subvolume delete "$backup"_ro
   btrfs filesystem defragment -r -clzo "$backup"
   btrfs subvolume snapshot -r "$backup" "$backup"_ro
+  sync
   btrfs send "$backup"_ro | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
-  btrfs subvolume delete "$backup"_ro
+  btrfs subvolume delete "$backup"
+}
+
+send_incremental_subvolume () {
+  subvolume=${1:?First parameter is subvolume}
+  date=$(date +%Y%m%d%H%M)
+  path="$btrfs_location/__current/$subvolume"
+  backup="$btrfs_location/__snapshot/$subvolume"_"$date"
+  parent=$(ls "$btrfs_location/__snapshot/$subvolume"_* | sort | tail -n 1)
+  btrfs subvolume snapshot -r "$path" "$backup"
+  sync
+  btrfs send -p "$parent"  "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
   btrfs subvolume delete "$backup"
 }
 
 subvolumes="ROOT opt home var"
 for subvolume in $subvolumes; do
-  send_subvolume $subvolume
+  if [ "$cmd" == "base" ]; then
+    send_base_subvolume $subvolume
+  else
+    send_incremental_subvolume $subvolume
+  fi
 done
