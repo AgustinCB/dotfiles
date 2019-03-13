@@ -25,11 +25,14 @@ send_incremental_subvolume () {
   date=$(date +%Y%m%d%H%M)
   path="$btrfs_location/__current/$subvolume"
   backup="$btrfs_location/__snapshot/$subvolume"_"$date"
-  parent=$(ls "$btrfs_location/__snapshot/$subvolume"_* | sort | tail -n 1)
+  parent=$(ls "$btrfs_location/__snapshot" | grep "$subvolume" | sort | tail -n 1)
+  parent_path="$btrfs_location/__snapshot/$parent"
   btrfs subvolume snapshot -r "$path" "$backup"
   sync
-  btrfs send -p "$parent"  "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
-  btrfs subvolume delete "$backup"
+  btrfs send -p "$parent_path"  "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
+  echo "Finish send"
+  btrfs subvolume delete "$parent_path"
+  sync
 }
 
 subvolumes="ROOT opt home var"
