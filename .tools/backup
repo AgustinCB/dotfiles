@@ -15,7 +15,7 @@ send_base_subvolume () {
   btrfs subvolume delete "$backup"_ro
   btrfs filesystem defragment -r -clzo "$backup"
   btrfs subvolume snapshot -r "$backup" "$backup"_ro
-  sync
+  sync "$btrfs_location"
   btrfs send "$backup"_ro | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
   btrfs subvolume delete "$backup"
 }
