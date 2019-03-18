@@ -7,17 +7,15 @@ cmd=${1:?$USAGE}
 btrfs_location=${2:?$USAGE}
 
 send_base_subvolume () {
+  date=$(date +%Y%m%d%H%M)
   subvolume=${1:?First parameter is subvolume}
   path="$btrfs_location/__current/$subvolume"
-  backup="$btrfs_location/__snapshot/$subvolume"
-  btrfs subvolume snapshot -r "$path" "$backup"_ro
-  btrfs subvolume snapshot "$backup"_ro "$backup"
-  btrfs subvolume delete "$backup"_ro
-  btrfs filesystem defragment -r -clzo "$backup"
-  btrfs subvolume snapshot -r "$backup" "$backup"_ro
+  backup="$btrfs_location/__snapshot/$subvolume"_"$date"
+  btrfs subvolume snapshot -r "$path" "$backup"
   sync "$btrfs_location"
-  btrfs send "$backup"_ro | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
+  btrfs send "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
   btrfs subvolume delete "$backup"
+  sync "$btrfs_location"
 }
 
 send_incremental_subvolume () {
@@ -28,11 +26,10 @@ send_incremental_subvolume () {
   parent=$(ls "$btrfs_location/__snapshot" | grep "$subvolume" | sort | tail -n 1)
   parent_path="$btrfs_location/__snapshot/$parent"
   btrfs subvolume snapshot -r "$path" "$backup"
-  sync
+  sync "$btrfs_location"
   btrfs send -p "$parent_path"  "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
-  echo "Finish send"
   btrfs subvolume delete "$parent_path"
-  sync
+  sync "$btrfs_location"
 }
 
 subvolumes="ROOT opt home var"
