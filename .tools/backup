@@ -5,6 +5,7 @@ set -xeuo pipefail
 USAGE="Usage: backup [base|incremental] [btrfs root path]"
 cmd=${1:?$USAGE}
 btrfs_location=${2:?$USAGE}
+hostname=$(hostname)
 
 send_base_subvolume () {
   date=$(date +%Y%m%d%H%M)
@@ -13,8 +14,7 @@ send_base_subvolume () {
   backup="$btrfs_location/__snapshot/$subvolume"_"$date"
   btrfs subvolume snapshot -r "$path" "$backup"
   sync "$btrfs_location"
-  btrfs send "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
-  btrfs subvolume delete "$backup"
+  btrfs send "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots/$hostname"
   sync "$btrfs_location"
 }
 
@@ -27,7 +27,7 @@ send_incremental_subvolume () {
   parent_path="$btrfs_location/__snapshot/$parent"
   btrfs subvolume snapshot -r "$path" "$backup"
   sync "$btrfs_location"
-  btrfs send -p "$parent_path"  "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots"
+  btrfs send -p "$parent_path"  "$backup" | ssh pi@backup-server "sudo btrfs receive /mnt/__snapshots/$hostname"
   btrfs subvolume delete "$parent_path"
   sync "$btrfs_location"
 }
