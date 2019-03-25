@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -xeuo pipefail
+
+USAGE="USAGE: fix-commit [commit] [date string]"
+commit=${1:?$USAGE}
+date=${2:?$USAGE}
+
+git filter-branch -f --env-filter \
+    "if [ \$GIT_COMMIT = $commit ]
+     then
+         export GIT_AUTHOR_DATE=\"$date\"
+         export GIT_COMMITTER_DATE=\"$date\"
+     fi"
