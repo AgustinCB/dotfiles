@@ -3,4 +3,4 @@
 killall -q lemonbar 
 killall -q sleep
 pkill -f $HOME/.config/lemonbar/barcontent.sh 
-$HOME/.config/lemonbar/barcontent.sh	  | lemonbar -f "Liberation Mono" -g 1844x25+38+15 &
+$HOME/.config/lemonbar/barcontent.sh	  | lemonbar -f "Liberation Mono" -g 1844x25+38+15 -B "#2e3443" &
