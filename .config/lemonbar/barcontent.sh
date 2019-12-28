@@ -7,11 +7,11 @@ Battery() {
 	battery_status="$(acpi -b | awk -F '[[:space:]]+|,' '{ print $3 }')"
 	case "$battery_status" in
 		'Charging')
-			echo " %{F#EABA66}$STATE%{F-}  " ;;
+			echo " %{F#EABA66}$STATE%{F-} " ;;
 		'Discharging')
-			echo " %{F#D93650}$STATE%{F-}  " ;;
+			echo " %{F#D93650}$STATE%{F-} " ;;
 		'Full') 
-			echo " %{F#00B200}$STATE%{F-}  " 
+			echo " %{F#00B200}$STATE%{F-} " 
 	esac
 }
 Disk() {
