@@ -1,0 +1,4 @@
+2022-04-12 12:52:11.713 | INFO  | starting nmail v3.67  (main.cpp:137)
+2022-04-12 12:52:11.717 | INFO  | entering ui loop  (ui.cpp:1956)
+2022-04-12 12:52:12.998 | INFO  | exiting ui loop  (ui.cpp:2061)
+2022-04-12 12:52:13.193 | INFO  | exiting nmail  (main.cpp:393)

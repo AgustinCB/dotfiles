@@ -1,1 +1,3 @@
+config/nmail/cache
+config/nmail/secret.conf
 *.swp

@@ -2,6 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+alias nmail='nmail -d ~/.config/nmail'
 alias vi='viu'
 alias vimage='viu'
 alias vm='glow -p'
