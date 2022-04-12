@@ -1,6 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
+
 alias vi='viu'
 alias vimage='viu'
 alias vm='glow -p'
@@ -12,6 +13,7 @@ alias vvideo='vv'
 alias vw='rdrview -B lynx'
 alias vwebsite='vw'
 alias nnn='nnn -a -P p -c'
+alias vrw='/home/agustin/.local/bin/view-reader-website'
 set -g theme_color_scheme nord
 set -g fish_prompt_pwd_dir_length 0
 setenv EDITOR vim
