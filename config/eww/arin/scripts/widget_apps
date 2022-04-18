@@ -11,7 +11,7 @@ elif [[ "$1" == "--ge" ]]; then
 elif [[ "$1" == "--rd" ]]; then
 	kitty tuir &
 elif [[ "$1" == "--ml" ]]; then
-	kitty nmail &
+	kitty nmail -d ~/.config/nmail &
 elif [[ "$1" == "--nm" ]]; then
 	kitty iwctl &
 fi

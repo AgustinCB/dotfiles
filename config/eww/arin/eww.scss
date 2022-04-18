@@ -3,13 +3,13 @@
 	all: unset;
 	font-family: feather;
 	font-family: "JetBrains Mono";
-	color: #434C5E;
+	color: #D8DEE9;
 }
 
 /** Bar ***********************************/
 .dockbox {
-	background-color: #81A1C1;
-	border: 3px solid #8FBCBB;
+	background-color: #2E3440;
+	border: 3px solid #81A1C1;
 	border-radius: 12px;
 }
 
@@ -30,7 +30,7 @@
 
 .workspace {
 	background-color: #BF616A;
-	color: #2E3440;
+	color: #ECEFF4;
 	border: 2px solid #434C5E;
 	border-radius: 16px;
 	font-size : 14px;
@@ -53,7 +53,7 @@
 .date {
 	font-size : 17px;
 	font-weight : bold;
-	color: #434C5E
+	color: #ECEFF4;
 }
 
 /** Weather ********************************************/
@@ -136,8 +136,7 @@
 }
 
 .infotext {
-	background-color: #8FBCBB;
-	border: 0px solid #434C5E;
+	background-color: #434C5E;
 	border-radius: 16px;
 	font-size : 24px;
 	padding: 0px 5px 0px 5px;
