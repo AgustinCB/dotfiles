@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ "$1" == "--tr" ]]; then
+	kitty --working-directory ~ &
+elif [[ "$1" == "--vv" ]]; then
+	vivaldi-stable &
+elif [[ "$1" == "--fm" ]]; then
+	kitty --listen-on unix:/tmp/mykitty$RANDOM nnn -a -P p -c ~ &
+elif [[ "$1" == "--ge" ]]; then
+	kitty vim &
+elif [[ "$1" == "--rd" ]]; then
+	kitty tuir &
+elif [[ "$1" == "--ml" ]]; then
+	kitty nmail &
+elif [[ "$1" == "--nm" ]]; then
+	kitty iwctl &
+fi

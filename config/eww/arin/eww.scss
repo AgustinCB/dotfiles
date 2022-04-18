@@ -1,0 +1,156 @@
+/** Global *******************************************/
+*{
+	all: unset;
+	font-family: feather;
+	font-family: "JetBrains Mono";
+	color: #434C5E;
+}
+
+/** Bar ***********************************/
+.dockbox {
+	background-color: #81A1C1;
+	border: 3px solid #8FBCBB;
+	border-radius: 12px;
+}
+
+/** Icons ***********************************/
+.genicon {
+	background-repeat: no-repeat;
+	background-size: 20px;
+	min-height: 20px;
+	min-width: 20px;
+}
+
+.appicon {
+        background-repeat: no-repeat;
+	background-size: 40px;
+	min-height: 40px;
+	min-width: 40px;
+}
+
+.workspace {
+	background-color: #BF616A;
+	color: #2E3440;
+	border: 2px solid #434C5E;
+	border-radius: 16px;
+	font-size : 14px;
+	padding: 0px 6px 0px 6px;
+	margin: -2px 0px 0px 0px;
+	font-weight : bold;
+}
+
+/** Clock ********************************************/
+.clockbox {
+	margin: 0px -100px 0px 10px;
+	min-width: 50px;
+}
+
+.time {
+	font-size : 18px;
+	font-weight : bold;
+}
+
+.date {
+	font-size : 17px;
+	font-weight : bold;
+	color: #434C5E
+}
+
+/** Weather ********************************************/
+.weatherbox {
+}
+
+.weathericon {
+	font-family: Iosevka Nerd Font;
+	font-size : 32px;
+	font-weight : normal;
+	margin : 0px 0px 0px -50px;
+}
+
+.weathertemp {
+	font-size : 24px;
+	font-weight : bold;
+	margin : 0px 10px 0px 0px;
+}
+
+/** Music *************************************************/
+.album_art {
+	background-repeat: no-repeat;
+	background-size: 40px;
+	min-height: 40px;
+	min-width: 40px;
+	margin: 8px;
+	border-radius: 8px;
+}
+
+.musicbox {
+}
+
+.song {
+	font-size : 20px;
+	font-weight : bold;
+}
+
+.artist {
+	font-size : 16px;
+	margin: 0 -60px 0 5px;
+}
+
+.musicbuttons {
+	margin: 0 10px 0 0;
+}
+
+.playbutton {
+	background-repeat: no-repeat;
+	background-size: 24px;
+	min-height: 24px;
+	min-width: 24px;
+	margin: 0px;
+}
+
+.trackbutton {
+    	background-repeat: no-repeat;
+	background-size: 18px;
+	min-height: 18px;
+	min-width: 18px;
+	margin: 3px 0px 0px 0px;
+}
+
+/** System *************************************************/
+.mails {
+	background-color: #BF616A;
+	border: 0px solid #434C5E;
+	border-radius: 16px;
+	font-size : 24px;
+	padding: 0px 5px 0px 5px;
+	margin: 10px 0px 10px 0px;
+	font-weight : bold;
+}
+
+.trayicon {
+	background-repeat: no-repeat;
+	background-size: 36px;
+	min-height: 36px;
+	min-width: 36px;
+	margin: 8px 0px 0px 0px;
+}
+
+.infotext {
+	background-color: #8FBCBB;
+	border: 0px solid #434C5E;
+	border-radius: 16px;
+	font-size : 24px;
+	padding: 0px 5px 0px 5px;
+	margin: 10px 0px 10px 0px;
+	font-weight : bold;
+}
+
+.face {
+	background-size: 24px;
+	min-height: 24px;
+	min-width: 30px;
+	margin: 8px 0px 8px 0px;
+	border-radius: 100%;
+}
+
+/** EOF *************************************************/

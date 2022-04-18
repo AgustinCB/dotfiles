@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$1" == "--menu" ]]; then
+	dmenu_run
+elif [[ "$1" == "--search" ]]; then
+	kitty ddgr &
+fi

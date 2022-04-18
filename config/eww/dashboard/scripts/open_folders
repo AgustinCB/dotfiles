@@ -1,0 +1,31 @@
+#!/bin/bash
+
+## Open folders in nnn
+FILE="$HOME/.cache/eww_launch.dashboard"
+CFG="$HOME/.config/eww/dashboard"
+EWW=`which eww`
+
+close_dash() {
+	${EWW} --config "$CFG" close \
+					background profile system clock uptime music \
+					reddit youtube weather mail logout sleep reboot poweroff folders
+	rm -rf "$FILE"
+}
+
+open_nnn() {
+	kitty --listen-on unix:/tmp/mykitty$RANDOM nnn -a -P p -c "$1"
+}
+
+if [[ "$1" == "--dl" ]]; then
+	close_dash && open_nnn ~/Downloads &
+elif [[ "$1" == "--projects" ]]; then
+	close_dash && open_nnn ~/projects &
+elif [[ "$1" == "--opt" ]]; then
+	close_dash && open_nnn /opt &
+elif [[ "$1" == "--cfg" ]]; then
+	close_dash && open_nnn ~/.config &
+elif [[ "$1" == "--local" ]]; then
+	close_dash && open_nnn ~/.local/share &
+elif [[ "$1" == "--fm" ]]; then
+	close_dash && open_nnn ~ &
+fi
