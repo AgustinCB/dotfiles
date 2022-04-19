@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set -xeuo pipefail
+
 ## Files and CMD
 FILE="$HOME/.cache/eww_launch.sidebar"
-CFG="$HOME/.config/eww/arin/sidedar"
+CFG="$HOME/.config/eww/arin/sidebar"
 EWW=`which eww`
 
 ## Run eww daemon if not running already
@@ -25,6 +27,7 @@ run_eww() {
 
 ## Launch or close widgets accordingly
 if [[ ! -f "$FILE" ]]; then
+	echo "HOLA $FILE"
 	touch "$FILE"
 	run_eww
 else

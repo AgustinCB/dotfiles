@@ -24,4 +24,5 @@ if [[ ! -f "$FILE" ]]; then
 else
 	${EWW} --config "$CFG" close search apps weather music system
 	rm "$FILE"
+	"$HOME"/.config/eww/arin/sidebar/close-sidebar
 fi

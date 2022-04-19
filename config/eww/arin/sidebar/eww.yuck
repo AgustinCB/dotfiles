@@ -12,7 +12,7 @@
 (defpoll DISK_USAGE :interval "1s" `../scripts/sys_info --disk`)
 (defpoll BLIGHT :interval "1s" `../scripts/sys_info --blight`)
 (defpoll BATTERY :interval "5s" `../scripts/sys_info --bat`)
-(defpoll QUOTE :interval "5m" `cat /home/agustin/.cache/random_tip`)
+(defpoll QUOTE :interval "5m" `ansifilter -i /home/agustin/.cache/random_tip `)
 
 ;; ** Widgets *************************************************************************
 

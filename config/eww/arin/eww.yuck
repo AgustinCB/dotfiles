@@ -105,7 +105,7 @@
 					(box :orientation "h" :spacing 8 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
 						(box :style "background-image: url('${WIFIICON}');" :class "trayicon")
 							(label :class "infotext" :halign "start" :text NETSTAT)))
-				(button :onclick "sidedar/toggle_sidebar"
+				(button :onclick "sidebar/toggle_sidebar"
 					(box :orientation "h" :spacing 8 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
 						(box :style "background-image: url('${IMAGE}');" :class "face")
 							(label :class "infotext" :halign "start" :text USER))))))
