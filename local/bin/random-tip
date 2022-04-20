@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import random
+import sys
+from subprocess import Popen, PIPE
+from typing import Optional
+
+def maybe_get_tip() -> Optional[str]:
+    process = Popen(['cht.sh', ':random'], stdout=PIPE, stderr=PIPE)
+    out, _ = process.communicate()
+    tips = out.decode('utf-8').split('\n\n')[1:]
+    random.shuffle(tips)
+    if tips != None:
+        for t in tips:
+            lines = t.count('\n')
+            if lines < 4:
+                return t
+    return None
+
+if __name__ == '__main__':
+    tip = None
+    while tip == None:
+        tip = maybe_get_tip()
+    print(tip.strip())

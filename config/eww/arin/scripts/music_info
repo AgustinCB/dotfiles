@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Get data
-STATUS="$(spt pb --status -f '%s')"
+STATUS="$($HOME/.local/bin/fetch-music-info --status)"
 COVER="/tmp/.music_cover.jpg"
 MUSIC_DIR="$HOME/Music"
 
@@ -16,7 +16,7 @@ get_status() {
 
 ## Get song
 get_song() {
-	song=`spt pb -f '%t'`
+	song=`$HOME/.local/bin/fetch-music-info --song`
 	if [[ -z "$song" ]]; then
 		echo "Offline"
 	else
@@ -26,7 +26,7 @@ get_song() {
 
 ## Get artist
 get_artist() {
-	artist=`spt pb -f '%a'`
+	artist=`$HOME/.local/bin/fetch-music-info --artist`
 	if [[ -z "$artist" ]]; then
 		echo "Offline"
 	else
