@@ -143,16 +143,16 @@
 
 .song {
 	color: #8FBCBB;
-	font-size : 24px;
+	font-size : 32px;
 	font-weight : bold;
-	margin : 40px 0px 0px 0px;
+	margin : 20px 0px 0px 0px;
 }
 
 .artist {
 	color: #EBCB8B;
-	font-size : 16px;
+	font-size : 24px;
 	font-weight : normal;
-	margin : 0px 0px 15px 0px;
+	margin : 0px 0px 5px 0px;
 }
 
 .btn_prev, .btn_play, .btn_next {
@@ -160,17 +160,17 @@
 }
 .btn_prev {
 	color: #EBCB8B;
-	font-size : 32px;
+	font-size : 48px;
 	font-weight : normal;
 }
 .btn_play {
 	color: #8FBCBB;
-	font-size : 48px;
+	font-size : 64px;
 	font-weight : bold;
 }
 .btn_next {
 	color: #EBCB8B;
-	font-size : 32px;
+	font-size : 48px;
 	font-weight : normal;
 }
 
@@ -185,7 +185,7 @@
 	border-radius: 8px;
 	min-height: 20px;
 	min-width: 410px;
-	margin : 10px 0px 0px 0px;
+	margin : 0px 0px 0px 0px;
 }
 
 /** Weather ***************************************/
@@ -243,7 +243,7 @@
 .iconweb, .iconmail {
 	color: #2E3440;
 	font-family: Iosevka Nerd Font;
-	font-size : 70px;
+	font-size : 100px;
 	font-weight : normal;
 }
 .iconmail {

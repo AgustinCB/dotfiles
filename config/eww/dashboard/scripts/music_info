@@ -1,13 +1,13 @@
 #!/bin/bash
 
 ## Get data
-STATUS="$(mpc status)"
+STATUS="$(spt pb --status -f '%s')"
 COVER="/tmp/.music_cover.jpg"
 MUSIC_DIR="$HOME/Music"
 
 ## Get status
 get_status() {
-	if [[ $STATUS == *"[playing]"* ]]; then
+	if [[ $STATUS == "▶" ]]; then
 		echo ""
 	else
 		echo "喇"
@@ -16,7 +16,7 @@ get_status() {
 
 ## Get song
 get_song() {
-	song=`mpc -f %title% current`
+	song=`spt pb -f '%t'`
 	if [[ -z "$song" ]]; then
 		echo "Offline"
 	else
@@ -26,7 +26,7 @@ get_song() {
 
 ## Get artist
 get_artist() {
-	artist=`mpc -f %artist% current`
+	artist=`spt pb -f '%a'`
 	if [[ -z "$artist" ]]; then
 		echo "Offline"
 	else
@@ -89,9 +89,9 @@ elif [[ "$1" == "--ttime" ]]; then
 elif [[ "$1" == "--cover" ]]; then
 	get_cover
 elif [[ "$1" == "--toggle" ]]; then
-	mpc -q toggle
+	bash -c 'spt pb --toggle 1>/dev/null 2>/dev/null &'
 elif [[ "$1" == "--next" ]]; then
-	{ mpc -q next; get_cover; }
+	bash -c 'spt pb --next 1>/dev/null 2>/dev/null &'
 elif [[ "$1" == "--prev" ]]; then
-	{ mpc -q prev; get_cover; }
+	bash -c 'spt pb --previous 1>/dev/null 2>/dev/null &'
 fi
