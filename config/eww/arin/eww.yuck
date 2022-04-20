@@ -18,9 +18,9 @@
 (defpoll HEX :interval "15m" `scripts/weather_info --hex`)
 
 ;; Music vars
-(defpoll SONG :interval "1s" `scripts/music_info --song`)
-(defpoll ARTIST :interval "1s" `scripts/music_info --artist`)
-(defpoll COVER :interval "1s" `scripts/music_info --cover`)
+(defpoll SONG :interval "3s" `scripts/music_info --song`)
+(defpoll ARTIST :interval "3s" `scripts/music_info --artist`)
+(defpoll COVER :interval "3s" `scripts/music_info --cover`)
 (defpoll STATUS :interval "1s" `scripts/music_info --status`)
 
 ;; Mail vars
@@ -74,16 +74,19 @@
 
 ;; music
 (defwidget music [] 
-		(box :class "dockbox"
+		(box :class "dockbox" :orientation "h" :space-evenly "false"
 			(box :orientation "h" :spacing 0 :valign "center" :halign "start" :space-evenly "false" :vexpand "false" :hexpand "false"
 				(box :class "album_art" :vexpand "false" :hexpand "false" :style "background-image: url('${COVER}');")
 				(box :class "musicbox" :spacing 0 :valign "center" :halign "start" :space-evenly "false" :vexpand "false" :hexpand "false"
-					(label :class "song" :halign "start" :wrap "false" :limit-width 20 :text SONG)
-					(label :class "artist" :halign "start" :wrap "false" :limit-width 20 :text ARTIST)))
+					(label :class "song" :halign "start" :wrap "false" :limit-width 9 :text SONG)
+					(label :class "artist" :halign "start" :wrap "false" :limit-width 7 :text ARTIST)))
 			(box :class "musicbuttons" :orientation "h" :spacing 0 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/music/previous-button.png');" :class "trackbutton" :onclick "scripts/music_info --prev")
-				(button :style "background-image: url('${STATUS}');" :class "playbutton" :onclick "scripts/music_info --toggle")
-				(button :style "background-image: url('images/icons/music/next-button.png');" :class "trackbutton" :onclick "scripts/music_info --next"))))
+				(button :onclick "bash -c 'spt pb --previous 2>/dev/null 1>/dev/null &'"
+					(box :style "background-image: url('images/icons/music/previous-button.png');" :class "trackbutton"))
+				(button :onclick "bash -c 'spt pb --toggle 2>/dev/null 1>/dev/null &'"
+					(box :style "background-image: url('${STATUS}');" :class "playbutton"))
+				(button :onclick "bash -c 'spt pb --next 2>/dev/null 1>/dev/null &'"
+					(box :style "background-image: url('images/icons/music/next-button.png');" :class "trackbutton")))))
 
 ;; system
 (defwidget system [] 
@@ -163,7 +166,7 @@
            :focusable "falsa"
            :screen 1
            :geometry (geometry :x 1098
-                               :y "20px"
+                               :y 20
                                :width 400
                                :height "60px"
                                :anchor "top left")
