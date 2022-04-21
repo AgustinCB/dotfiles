@@ -1,0 +1,79 @@
+/** Global *******************************************/
+*{
+	all: unset;
+	font-family: feather;
+	font-family: "JetBrains Mono";
+	color: #D8DEE9;
+}
+
+/** Boxes ***********************************/
+.winbox {
+	background-color: #2E3440;
+	border: 3px solid #81A1C1;
+	border-radius: 12px;
+}
+
+/** Resources ***********************************/
+.res_box {
+	background-color: #434C5E;
+	border: 1px solid #E5E9F0;
+	border-radius: 12px;
+	padding: 14px 18px 14px 18px;
+}
+
+.res_circle {
+	background-color: #E1DCD2;
+	border: 0px solid #161616;
+	border-radius: 100%;
+	padding: 0px;
+}
+
+.res_circle_small {
+	background-color: #3B4252;
+	border: 0px solid #E5E9F0;
+	border-radius: 100%;
+	padding: 40px;
+}
+
+.res_text {
+	background-color: #3B4252;
+	border: 1px solid #ECEFF4;
+	border-radius: 16px;
+	font-size : 24px;
+	padding: 0px 8px 0px 8px;
+	margin: 0px 0px 0px 0px;
+	font-weight : bold;
+}
+
+.res_cpu {
+	color: #BF616A;
+}
+
+.res_mem {
+	color: #D08770;
+}
+
+.res_disk {
+	color: #EBCB8B;
+}
+
+/** Power Buttons ***********************************/
+.powericons {
+    background-repeat: no-repeat;
+	background-size: 48px;
+	min-height: 48px;
+	min-width: 48px;
+}
+
+/** Quotes ***********************************/
+.quote_box {
+	margin: 20px;
+}
+
+.quote_text {
+	font-size : 20px;
+	font-style: italic;
+	font-weight : bold;
+}
+
+/** EOF *************************************************/

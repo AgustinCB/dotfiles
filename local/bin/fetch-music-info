@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+
+CACHE="$HOME"/.cache/spotify-info
+
+if [[ "$1" == "--artist" ]]; then
+	cat "$CACHE" | awk -F'<><><>' '{print $3}'
+elif [[ "$1" == "--song" ]]; then
+	cat "$CACHE" | awk -F'<><><>' '{print $2}'
+elif [[ "$1" == "--status" ]]; then
+	cat "$CACHE" | awk -F'<><><>' '{print $1}'
+elif [[ "$1" == "--fetch" ]]; then
+	spt pb --status -f '%s<><><>%t<><><>%a' > "$CACHE"
+fi

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FILE="$HOME/.cache/eww_launch.sidebar"
+CFG="$HOME/.config/eww/arin/sidebar"
+EWW=`which eww`
+
+if [[ -f "$FILE" ]]; then
+	${EWW} --config "$CFG" close resources logout suspend lock reboot shutdown quotes
+	rm -f "$FILE"
+fi

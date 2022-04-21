@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -euo pipefail
+
+ffmpeg -video_size 2256x1504 -framerate 30 -f x11grab -i :0.0+0,0 -c:v libx264rgb -crf 0 -preset ultrafast ~/Media/$(date -u +"%Y-%m-%dT%H:%M:%S%Z").mkv 2>/dev/null 1>/dev/null &

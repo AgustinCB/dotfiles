@@ -1,0 +1,3 @@
+*/5 * * * * /home/agustin/.config/eww/dashboard/scripts/weather_info --getdata
+*/5 * * * * bash -c "/home/agustin/.local/bin/random-tip > /home/agustin/.cache/random_tip"
+*/2 * * * * bash -c "/home/agustin/.local/bin/fetch-music-info --fetch"

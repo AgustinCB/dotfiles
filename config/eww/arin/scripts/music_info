@@ -1,0 +1,65 @@
+#!/bin/bash
+
+## Get data
+STATUS="$($HOME/.local/bin/fetch-music-info --status)"
+COVER="/tmp/.music_cover.jpg"
+MUSIC_DIR="$HOME/Music"
+
+## Get status
+get_status() {
+	if [[ $STATUS == "▶" ]]; then
+		echo "images/icons/music/pause-button.png"
+	else
+		echo "images/icons/music/play-button.png"
+	fi
+}
+
+## Get song
+get_song() {
+	song=`$HOME/.local/bin/fetch-music-info --song`
+	if [[ -z "$song" ]]; then
+		echo "Offline"
+	else
+		echo "$song"
+	fi	
+}
+
+## Get artist
+get_artist() {
+	artist=`$HOME/.local/bin/fetch-music-info --artist`
+	if [[ -z "$artist" ]]; then
+		echo "Offline"
+	else
+		echo "$artist"
+	fi	
+}
+
+## Get cover
+get_cover() {
+	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
+	STATUS=$?
+
+	# Check if the file has a embbeded album art
+	if [ "$STATUS" -eq 0 ];then
+		echo "$COVER"
+	else
+		echo "images/music.png"
+	fi
+}
+
+## Execute accordingly
+if [[ "$1" == "--song" ]]; then
+	get_song
+elif [[ "$1" == "--artist" ]]; then
+	get_artist
+elif [[ "$1" == "--status" ]]; then
+	get_status
+elif [[ "$1" == "--cover" ]]; then
+	get_cover
+elif [[ "$1" == "--toggle" ]]; then
+	spt pb --toggle &
+elif [[ "$1" == "--next" ]]; then
+	spt pb --next &
+elif [[ "$1" == "--prev" ]]; then
+	spt pb --prev &
+fi

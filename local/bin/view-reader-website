@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rdrview "$1" -H | pandoc /dev/stdin -f html -t markdown_strict | glow -p /dev/stdin

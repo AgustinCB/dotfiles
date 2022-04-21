@@ -1,0 +1,11 @@
+#!/bin/python
+
+import imaplib
+obj = imaplib.IMAP4_SSL('imap.fastmail.com',993)
+
+with open('/home/agustin/.config/secrets/mail_notification') as f:
+    password = f.read()
+    obj.login('your@email.here', password) # write your email and password
+
+obj.select(readonly=True)
+print(len(obj.search(None, 'UnSeen')[1][0].split()))
