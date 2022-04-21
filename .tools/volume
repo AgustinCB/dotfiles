@@ -1,9 +1,0 @@
-#!/bin/bash
-
-pactl set-sink-volume 0 "$1"%
-
-vol=$(echo `(pactl list sinks | grep "^[[:space:]]Volume: ")| awk '{print $5}'`)
-
-notification="Volume: $vol ($1 %)"
-
-twmnc $notification
