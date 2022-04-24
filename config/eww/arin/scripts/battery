@@ -18,6 +18,8 @@ main() {
 			echo "images/icons/battery/battery-1.png"
 		elif [[ ($BATTERY -lt 10) && (($BATTERY -gt 0) || ($BATTERY -eq 0)) ]]; then
 			echo "images/icons/battery/low.png"
+		else
+			echo "images/icons/battery/full.png"
 		fi
 	fi
 }
